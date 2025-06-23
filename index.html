@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Desri & David</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- AUDIO -->
+  <!-- <audio id="bg-music" src="assets/audio/backsound.mp3" loop></audio> -->
+
+  <!-- Welcome Screen -->
+  <div id="welcome-screen">
+    <div class="photo-frame">
+      <img src="assets/images/bg.JPG" alt="Foto Pasangan" class="couple-photo" />
+    </div>
+
+    <h1 class="couple-name">Desri & David</h1>
+
+    <p class="invite-message">
+      Tanpa mengurangi rasa hormat,<br />
+      kami mengundang Bapak/Ibu/Saudara/i untuk hadir di acara kami.
+    </p>
+
+    <p class="invite-text">Kepada Yth.</p>
+    <h2 id="guest-name">Tamu Undangan</h2>
+
+    <button id="open-button" class="open-button">
+      <i class="fa-solid fa-envelope"></i> Buka Undangan
+    </button>
+  </div>
+
+  <!-- ISI UNDANGAN -->
+  <div id="invitation-sections" style="display: none;">
+
+    <!-- SECTION 1: COVER -->
+    <section id="cover" class="cover-section fade-in-section">
+      <div class="photo-frame">
+        <img src="assets/images/bg.JPG" alt="Foto Pasangan" class="couple-photo" />
+      </div>
+      <h2 class="wedding-of">The Wedding Of</h2>
+      <h1 class="couple-name cover">Desri<br>&amp;<br>David</h1>
+      <p class="wedding-date">Pemberkatan: 17 Juli 2025<br />Adat: 19 Juli 2025</p>
+    </section>
+
+    <!-- SECTION 2: Calon Mempelai -->
+    <section id="mempelai" class="bride-groom-section fade-in-section">
+      <h2 class="bride-groom-title">Dengan sukacita, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:</h2>
+      <div class="bride-groom-pair">
+        <!-- Mempelai Pria -->
+        <div class="groom">
+          <img src="assets/images/bg.JPG" alt="Foto David" class="bride-groom-photo" />
+          <h3 class="bride-groom-name">David Ideal Mendrofa, S.Ak</h3>
+          <p class="bride-groom-detail">
+            Putra ketiga dari:<br />
+            Bapak Haogolala Mendrofa<br />
+            & Ibu Lutiami Gaido<br />
+            <em>(A/I. Krista Mendrofa)</em>
+          </p>
+        </div>
+        <!-- Mempelai Wanita -->
+        <div class="bride">
+          <img src="assets/images/bg.JPG" alt="Foto Desri" class="bride-groom-photo" />
+          <h3 class="bride-groom-name">Desri Ani Fersari Waruwu, S.Kom</h3>
+          <p class="bride-groom-detail">
+            Putri ketiga dari:<br />
+            Bapak Abiyudi Waruwu<br />
+            & Ibu Yunimasi Mendrofa<br />
+            <em>(A/I. Tian Waruwu)</em>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Save The Date -->
+    <section id="save-the-date" class="section-akad fade-in-section">
+      <h2 class="section-title">Save the Date</h2>
+
+      <!-- COUNTDOWN -->
+      <div class="countdown-container">
+        <div class="countdown-box"><span id="days">0</span><small>Hari</small></div>
+        <div class="countdown-box"><span id="hours">0</span><small>Jam</small></div>
+        <div class="countdown-box"><span id="minutes">0</span><small>Menit</small></div>
+        <div class="countdown-box"><span id="seconds">0</span><small>Detik</small></div>
+      </div>
+
+      <!-- INFO PEMBERKATAN -->
+      <h2 class="section-title">Pemberkatan Nikah</h2>
+      <p><strong>Hari / Tanggal:</strong> Kamis, 17 Juli 2025</p>
+      <p><strong>Waktu:</strong> 10.00 WIB – Selesai</p>
+      <p><strong>Tempat:</strong> Gereja BNKP Jemaat Betania</p>
+
+      <!-- INFO ADAT -->
+      <h2 class="section-title">Acara Adat</h2>
+      <p><strong>Hari / Tanggal:</strong> Sabtu, 19 Juli 2025</p>
+      <p><strong>Waktu:</strong> 13.00 WIB – Selesai</p>
+      <p><strong>Tempat:</strong> Gedung Serbaguna Salak Madu</p>
+    </section>
+
+
+    <!-- SECTION 4: Lokasi (Map) -->
+    <section class="section-location fade-in-section">
+      <h2 class="section-title">Lokasi Acara</h2>
+      <p>Pemberkatan: Gereja BNKP Jemaat Betania</p>
+      <p>Adat: Gedung Serbaguna Salak Madu</p>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Galeri -->
+    <section id="galeri" class="section-gallery fade-in-section">
+      <h2 class="section-title">Galeri</h2>
+      <div class="gallery-grid">
+        <img src="assets/images/galeri1.jpg" alt="Galeri 1" />
+        <img src="assets/images/galeri2.jpg" alt="Galeri 2" />
+        <img src="assets/images/galeri3.jpg" alt="Galeri 3" />
+      </div>
+    </section>
+
+    <!-- SECTION 6: Ucapan -->
+    <section id="ucapan" class="section-rsvp fade-in-section">
+      <h2 class="section-title">Ucapan & Kehadiran</h2>
+
+      <!-- Form Ucapan -->
+      <div class="ucapan-form-wrapper">
+        <form id="ucapan-form">
+          <label for="nama-pengirim">Nama</label>
+          <input type="text" id="nama-pengirim" placeholder="Tulis nama Anda..." required />
+
+          <label for="pesan-ucapan">Ucapan</label>
+          <textarea id="pesan-ucapan" placeholder="Tulis ucapan untuk mempelai..." rows="3" required></textarea>
+
+          <button type="submit">Kirim Ucapan</button>
+        </form>
+      </div>
+
+      <!-- Daftar Ucapan -->
+      <div id="list-ucapan" class="ucapan-list">
+        <!-- Hasil ucapan muncul di sini -->
+      </div>
+
+    </section>
+
+
+    <!-- SECTION 7: Penutup -->
+    <section class="section-penutup fade-in-section">
+      <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+      <p class="penutup-nama">Desri & David</p>
+    </section>
+  </div>
+
+  <!-- FLOATING NAVIGATION -->
+  <div id="floating-nav" style="display: none;">
+    <div class="floating-button">
+      <button onclick="scrollToSection('cover')"><i class="fa fa-home"></i></button>
+      <button onclick="scrollToSection('mempelai')"><i class="fa fa-heart"></i></button>
+      <button onclick="scrollToSection('save-the-date')"><i class="fa fa-calendar"></i></button>
+      <button onclick="scrollToSection('galeri')"><i class="fa fa-image"></i></button>
+      <button onclick="scrollToSection('ucapan')"><i class="fa fa-comment"></i></button>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="script-index.js"></script>
+</body>
+</html>
