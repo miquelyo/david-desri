@@ -4,15 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Undangan Desri & David</title>
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
   <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- CDN ANIMATIONS-->
+  <script src="https://unpkg.com/useanimations@1.7.9/dist/useAnimations.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
+  <!-- Lottie Player CDN -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 
   <!-- CSS -->
   <link rel="stylesheet" href="index.css" />
@@ -20,7 +24,7 @@
 <body>
 
   <!-- AUDIO -->
-  <!-- <audio id="bg-music" src="assets/audio/backsound.mp3" loop></audio> -->
+  <audio id="bg-music" src="assets/audio/backsound.mp3" loop></audio>
 
   <!-- Welcome Screen -->
   <div id="welcome-screen">
@@ -53,7 +57,7 @@
       </div>
       <h2 class="wedding-of">The Wedding Of</h2>
       <h1 class="couple-name cover">Desri<br>&amp;<br>David</h1>
-      <p class="wedding-date">Pemberkatan: 17 Juli 2025<br />Adat: 19 Juli 2025</p>
+      <p class="wedding-date">Pemberkatan: 17.7.2025<br />Adat: 19.7.2025</p>
     </section>
 
     <!-- SECTION 2: Calon Mempelai -->
@@ -117,7 +121,7 @@
       <p>Pemberkatan: Gereja BNKP Jemaat Betania</p>
       <p>Adat: Gedung Serbaguna Salak Madu</p>
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.884666304028!2d97.62966477435035!3d1.2395456619217675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3025fdf94301cb9d%3A0x5412479ffeb3b55!2sGedung%20Serbaguna%20Salak%20Madu!5e0!3m2!1sid!2sid!4v1750750122400!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
 
@@ -125,9 +129,10 @@
     <section id="galeri" class="section-gallery fade-in-section">
       <h2 class="section-title">Galeri</h2>
       <div class="gallery-grid">
-        <img src="assets/images/galeri1.jpg" alt="Galeri 1" />
-        <img src="assets/images/galeri2.jpg" alt="Galeri 2" />
-        <img src="assets/images/galeri3.jpg" alt="Galeri 3" />
+        <img src="assets/images/galeri1.JPG" alt="Galeri 1" />
+        <img src="assets/images/galeri2.JPG" alt="Galeri 2" />
+        <img src="assets/images/galeri3.JPG" alt="Galeri 3" />
+        <img src="assets/images/galeri4.JPG" alt="Galeri 4" />
       </div>
     </section>
 
@@ -135,24 +140,40 @@
     <section id="ucapan" class="section-rsvp fade-in-section">
       <h2 class="section-title">Ucapan & Kehadiran</h2>
 
-      <!-- Form Ucapan -->
-      <div class="ucapan-form-wrapper">
-        <form id="ucapan-form">
-          <label for="nama-pengirim">Nama</label>
-          <input type="text" id="nama-pengirim" placeholder="Tulis nama Anda..." required />
+      <form id="ucapan-form" class="ucapan-form">
+        <input type="text" id="nama-pengirim" placeholder="Nama Anda" required />
+        <textarea id="pesan-ucapan" placeholder="Tulis ucapan..." required></textarea>
+        <button type="submit">Kirim Ucapan</button>
+      </form>
 
-          <label for="pesan-ucapan">Ucapan</label>
-          <textarea id="pesan-ucapan" placeholder="Tulis ucapan untuk mempelai..." rows="3" required></textarea>
-
-          <button type="submit">Kirim Ucapan</button>
-        </form>
-      </div>
-
-      <!-- Daftar Ucapan -->
       <div id="list-ucapan" class="ucapan-list">
-        <!-- Hasil ucapan muncul di sini -->
+        <!-- Ucapan akan ditambahkan di sini -->
+      </div>
+    </section>
+
+    <section id="gift" class="section-gift fade-in-section">
+      <h2 class="section-title">Gift</h2>
+      <p>Doa restu Anda adalah hadiah terindah. Namun jika ingin memberi tanda kasih, berikut rekening yang dapat digunakan:</p>
+
+      <div class="gift-container">
+
+        <!-- Kartu BCA -->
+        <div class="gift-card">
+          <img src="assets/images/bca.png" alt="BCA" class="bank-logo" />
+          <h3>1234567890</h3>
+          <p>a.n. Desri Ani Fersari Waruwu</p>
+        </div>
+
+        <!-- Kartu Mandiri -->
+        <div class="gift-card">
+          <img src="assets/images/mandiri.png" alt="Mandiri" class="bank-logo" />
+          <h3>9876543210</h3>
+          <p>a.n. David Ideal Mendrofa</p>
+        </div>
+
       </div>
 
+      <p class="gift-note">Terima kasih atas doa dan restunya 🙏</p>
     </section>
 
 
@@ -166,15 +187,23 @@
   <!-- FLOATING NAVIGATION -->
   <div id="floating-nav" style="display: none;">
     <div class="floating-button">
-      <button onclick="scrollToSection('cover')"><i class="fa fa-home"></i></button>
       <button onclick="scrollToSection('mempelai')"><i class="fa fa-heart"></i></button>
       <button onclick="scrollToSection('save-the-date')"><i class="fa fa-calendar"></i></button>
+      <button onclick="scrollToSection('gift')"><i class="fa fa-gift"></i></button>
       <button onclick="scrollToSection('galeri')"><i class="fa fa-image"></i></button>
       <button onclick="scrollToSection('ucapan')"><i class="fa fa-comment"></i></button>
     </div>
   </div>
 
+  <!-- Audio Toggle Button -->
+<div id="audio-toggle" class="audio-toggle" style="display: none;">
+  <i id="audio-icon" class="fa-solid fa-volume-high"></i>
+</div>
+
+  <div id="falling-effects"></div>
+
   <!-- SCRIPT -->
   <script src="script-index.js"></script>
+  <!-- <script src="script-music.js"></script> -->
 </body>
 </html>
