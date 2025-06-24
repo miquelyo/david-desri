@@ -93,7 +93,7 @@ html, body {
 
 .couple-name.cover {
   font-size: 3.2rem;
-  color: #a67c52;
+  color: #fff;
   line-height: 1.2;
 }
 
@@ -170,8 +170,7 @@ html, body {
 .cover-section {
   min-height: 100vh;
   width: 100%;
-  padding: 80px 20px 40px;
-  background-image: url('assets/images/bgscreen.png');
+  background-image: url('assets/images/galeri2.JPG');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -180,21 +179,33 @@ html, body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 60px 20px;
   position: relative;
+  z-index: 1;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Overlay hitam transparan */
+.cover-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Ubah 0.4 jadi 0.3 atau 0.5 sesuai kebutuhan */
   z-index: 0;
 }
 
-.wedding-of {
-  font-size: 1.2rem;
-  margin-top: 10px;
-  color: #333;
+/* Pastikan teks tetap di atas overlay */
+.cover-section h2,
+.cover-section h1,
+.cover-section p {
+  position: relative;
+  z-index: 1;
 }
 
-.wedding-date {
-  font-size: 1rem;
-  color: #555;
-  margin-top: 10px;
-}
 
 /* ===================================================
    9. RESPONSIVE MEDIA QUERIES
