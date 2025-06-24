@@ -238,3 +238,19 @@ function createFallingEffect() {
 
   setInterval(createSinglePetal, 300);
 }
+
+// Fungsi klik gambar
+const galleryImages = document.querySelectorAll('.gallery-grid img');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modal-img');
+
+galleryImages.forEach(img => {
+  img.addEventListener('click', () => {
+    modal.style.display = 'block';
+    modalImg.src = img.src;
+  });
+});
+
+function closeModal() {
+  modal.style.display = 'none';
+}
