@@ -32,6 +32,10 @@ Selamat datang di repositori undangan digital pernikahan kami, Desri & David. Pr
 │   ├── audio/
 │   ├── effects/
 │   ├── images/
-├── index.html
+├── html/
+├── supabase/
 ├── index.css
-└── script-index.js
+├── index.html
+├── script-index.js
+├── script-music.js
+└── script-tambahtamu.js
