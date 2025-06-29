@@ -250,9 +250,9 @@ loadUcapan();
 function createFallingEffect() {
   const container = document.getElementById('falling-effects');
   const images = [
-    '../assets/effects/e1.png',
-    '../assets/effects/e2.png',
-    '../assets/effects/e3.png',
+    'assets/effects/e1.png',
+    'assets/effects/e2.png',
+    'assets/effects/e3.png',
   ];
 
   function createSinglePetal() {
