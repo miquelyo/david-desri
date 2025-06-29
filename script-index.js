@@ -13,6 +13,7 @@ const supabaseClient = createClient(supabaseUrl, supabaseKey);
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
   const guestCode = params.get('code');
+  const guestTo = params.get('to');
   let guestName = 'Tamu Undangan';
 
   const openBtn = document.getElementById('open-button');
@@ -23,18 +24,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   const audioToggle = document.getElementById('audio-toggle');
   const audioIcon = document.getElementById('audio-icon');
 
-  // Ambil nama tamu dari Supabase berdasarkan kode
-  if (guestCode) {
-    const { data } = await supabaseClient
-      .from('guests')
-      .select('name')
-      .eq('code', guestCode)
-      .single();
+// 1. Cek kode (pakai metode lama)
+if (guestCode) {
+  const { data } = await supabaseClient
+    .from('guests')
+    .select('name')
+    .eq('code', guestCode)
+    .single();
 
-    if (data?.name) {
-      guestName = data.name;
-    }
+  if (data?.name) {
+    guestName = data.name;
   }
+}
+
+// 2. Kalau pakai `to` (langsung dari URL)
+else if (guestTo) {
+  guestName = decodeURIComponent(guestTo.replace(/\+/g, ' '));
+}
 
   // Tampilkan nama tamu
   document.getElementById('guest-name').textContent = guestName;
@@ -93,16 +99,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   fadeInElements.forEach(el => observer.observe(el));
 
   // ===========================================================
-  // 4. Floating Navigation
-  // ===========================================================
-  window.scrollToSection = function (id) {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // ===========================================================
   // 5. Countdown to Wedding
   // ===========================================================
   function updateCountdown() {
@@ -131,63 +127,121 @@ document.addEventListener('DOMContentLoaded', async () => {
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // ===========================================================
-  // 6. Supabase - Ucapan
-  // ===========================================================
-  const ucapanForm = document.getElementById('ucapan-form');
-  const namaInput = document.getElementById('nama-pengirim');
-  const pesanInput = document.getElementById('pesan-ucapan');
-  const listUcapan = document.getElementById('list-ucapan');
+// ===========================================================
+// 6. Supabase - Ucapan
+// ===========================================================
+const ucapanForm = document.getElementById('ucapan-form');
+const namaInput = document.getElementById('nama-pengirim');
+const pesanInput = document.getElementById('pesan-ucapan');
+const listUcapan = document.getElementById('list-ucapan');
+const paginationContainer = document.getElementById('pagination');
+const counterElement = document.getElementById('ucapan-counter');
 
-  function tampilkanUcapan({ name, message }) {
-    const item = document.createElement('div');
-    item.classList.add('ucapan-item');
-    item.innerHTML = `
-      <div class="ucapan-card">
-        <p class="ucapan-nama"><strong>${name}</strong></p>
-        <p class="ucapan-pesan">"${message}"</p>
-      </div>
-    `;
-    listUcapan.prepend(item);
-  }
+let allUcapan = [];
+let currentPage = 1;
+const itemsPerPage = 5;
 
+// Fungsi tampilkan 1 ucapan
+function tampilkanUcapan({ name, message, created_at }) {
+  const tanggal = new Date(created_at).toLocaleDateString('id-ID', {
+    day: '2-digit', month: 'long', year: 'numeric'
+  });
+  const waktu = new Date(created_at).toLocaleTimeString('id-ID', {
+    hour: '2-digit', minute: '2-digit'
+  });
 
-  async function loadUcapan() {
-    const { data } = await supabaseClient
-      .from('ucapan')
-      .select('*')
-      .order('created_at', { ascending: false });
+  const item = document.createElement('div');
+  item.classList.add('ucapan-item');
+  item.innerHTML = `
+    <p class="ucapan-nama">🕊️ <span>${name}</span></p>
+    <p class="ucapan-tanggal">${tanggal} - ${waktu}</p>
+    <p class="ucapan-pesan">“${message}”</p>
+  `;
+  listUcapan.appendChild(item);
+}
 
-    if (data) {
-      listUcapan.innerHTML = '';
-      data.forEach(tampilkanUcapan);
-    }
-  }
+// Tampilkan komentar per halaman
+function tampilkanHalamanUcapan() {
+  listUcapan.innerHTML = '';
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const halamanUcapan = allUcapan.slice(start, end);
+  halamanUcapan.forEach(tampilkanUcapan);
+  renderPagination();
+}
 
-  if (ucapanForm) {
-    ucapanForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+// Buat pagination tombol
+function renderPagination() {
+  paginationContainer.innerHTML = '';
+  const totalPages = Math.ceil(allUcapan.length / itemsPerPage);
+  if (totalPages <= 1) return;
 
-      const name = namaInput.value.trim();
-      const message = pesanInput.value.trim();
-      if (!name || !message) return;
-
-      const { data, error } = await supabaseClient
-        .from('ucapan')
-        .insert([{ name, message }]);
-
-      if (error) {
-        alert('Gagal mengirim ucapan.');
-        console.error(error);
-      } else {
-        tampilkanUcapan({ name, message });
-        ucapanForm.reset();
-      }
-
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i;
+    if (i === currentPage) btn.classList.add('active');
+    btn.addEventListener('click', () => {
+      currentPage = i;
+      tampilkanHalamanUcapan();
     });
+    paginationContainer.appendChild(btn);
+  }
+}
+
+// Load komentar dari Supabase
+async function loadUcapan() {
+  const { data, error } = await supabaseClient
+    .from('ucapan')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Gagal memuat ucapan:', error);
+    return;
   }
 
-  loadUcapan();
+  allUcapan = data;
+  tampilkanHalamanUcapan();
+  updateUcapanCounter();
+}
+
+// Update counter jumlah ucapan
+function updateUcapanCounter() {
+  if (counterElement) {
+    counterElement.textContent = `${allUcapan.length} Wishes`;
+  }
+}
+
+
+// Kirim ucapan baru
+if (ucapanForm) {
+  ucapanForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = namaInput.value.trim();
+    const message = pesanInput.value.trim();
+    if (!name || !message) return;
+
+    const { data, error } = await supabaseClient
+      .from('ucapan')
+      .insert([{ name, message }])
+      .select()
+      .single();
+
+    if (error) {
+      alert('Gagal mengirim ucapan.');
+      console.error(error);
+    } else {
+      allUcapan.unshift(data);
+      currentPage = 1;
+      tampilkanHalamanUcapan();
+      updateUcapanCounter();
+      ucapanForm.reset();
+    }
+  });
+}
+
+loadUcapan();
 });
 
 // ===========================================================
@@ -196,9 +250,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 function createFallingEffect() {
   const container = document.getElementById('falling-effects');
   const images = [
-    'assets/effects/e1.png',
-    'assets/effects/e2.png',
-    'assets/effects/e3.png',
+    '../assets/effects/e1.png',
+    '../assets/effects/e2.png',
+    '../assets/effects/e3.png',
   ];
 
   function createSinglePetal() {
@@ -254,3 +308,37 @@ galleryImages.forEach(img => {
 function closeModal() {
   modal.style.display = 'none';
 }
+
+// === TOGGLE GIFT REKENING ===
+const toggleGiftBtn = document.getElementById('toggle-gift-button');
+const giftDetails = document.getElementById('gift-details');
+
+if (toggleGiftBtn) {
+  toggleGiftBtn.addEventListener('click', () => {
+    giftDetails.classList.toggle('hidden');
+    toggleGiftBtn.innerHTML = giftDetails.classList.contains('hidden')
+      ? '<i class="fa-solid fa-gift"></i> Tampilkan Rekening'
+      : '<i class="fa-solid fa-gift"></i> Sembunyikan Rekening';
+  });
+}
+
+  const layer = document.getElementById('sparkle-layer');
+
+  for (let i = 0; i < 30; i++) {
+    const sparkle = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    sparkle.setAttribute("viewBox", "0 0 24 24");
+    sparkle.setAttribute("class", "sparkle");
+    sparkle.style.left = `${Math.random() * 100}vw`;
+    sparkle.style.top = `-${Math.random() * 20}vh`;
+    sparkle.style.animationDuration = `${3 + Math.random() * 3}s`;
+    sparkle.style.animationDelay = `${Math.random() * 5}s`;
+
+    sparkle.innerHTML = `
+      <path d="M12 2C13 6 18 11 22 12C18 13 13 18 12 22C11 18 6 13 2 12C6 11 11 6 12 2Z" fill="white"/>
+    `;
+    layer.appendChild(sparkle);
+  }
+
+
+
+

@@ -1,0 +1,143 @@
+/* Reset dasar */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f5f7fa;
+  color: #333;
+}
+
+h1, h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+form {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background: #3498db;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+}
+
+form button:hover {
+  background: #2980b9;
+}
+
+#result {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+#result.error {
+  background: #ffdddd;
+  color: #a33;
+}
+
+#result:not(.error) {
+  background: #ddffdd;
+  color: #2c662d;
+}
+
+.url-preview {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  background: #f0f8ff;
+  padding: 10px;
+  border-left: 4px solid #3498db;
+  border-radius: 5px;
+}
+
+/* Table Responsive */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background: #3498db;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+td input[type="text"] {
+  width: 100%;
+  font-size: 0.8rem;
+  padding: 4px;
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button.delete-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+button.delete-btn:hover {
+  background: #c0392b;
+}
+
+/* Responsive Table Wrapper */
+@media (max-width: 600px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  td input[type="text"] {
+    min-width: 150px;
+  }
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+}

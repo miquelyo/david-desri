@@ -8,44 +8,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
   <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <!-- CDN ANIMATIONS-->
   <script src="https://unpkg.com/useanimations@1.7.9/dist/useAnimations.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
   <!-- Lottie Player CDN -->
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <!-- CSS -->
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="/index.css" />
 </head>
 <body>
 
   <!-- AUDIO -->
-  <audio id="bg-music" src="assets/audio/backsound2.mp3" loop></audio>
+  <audio id="bg-music" src="../assets/audio/backsound2.mp3" loop></audio>
 
   <!-- Welcome Screen -->
   <div id="welcome-screen">
-    <div class="photo-frame">
-      <img src="assets/images/bg.JPG" alt="Foto Pasangan" class="couple-photo" />
-    </div>
+  <p class="wedding-of zoom-in">The Wedding of</p>
+  <h1 class="couple-name couple-name-full zoom-in">David & Desri</h1>
 
-    <h1 class="couple-name">Desri & David</h1>
+  <div class="welcome-spacer"></div>
 
-    <p class="invite-message">
-      Tanpa mengurangi rasa hormat,<br />
-      kami mengundang Bapak/Ibu/Saudara/i untuk hadir di acara kami.
-    </p>
+  <p class="invite-text zoom-in">Dear:</p>
+  <h2 id="guest-name" class="zoom-in">Tamu Undangan</h2>
 
-    <p class="invite-text">Kepada Yth.</p>
-    <h2 id="guest-name">Tamu Undangan</h2>
+  <button id="open-button" class="open-button zoom-in">
+    <i class="fa-solid fa-envelope"></i> Buka Undangan
+  </button>
 
-    <button id="open-button" class="open-button">
-      <i class="fa-solid fa-envelope"></i> Buka Undangan
-    </button>
-  </div>
+  <div id="sparkle-layer"></div>
+</div>
+
 
   <!-- ISI UNDANGAN -->
   <div id="invitation-sections" style="display: none;">
@@ -53,8 +49,22 @@
     <!-- SECTION 1: COVER -->
     <section id="cover" class="cover-section fade-in-section">
       <h2 class="wedding-of">The Wedding Of</h2>
-      <h1 class="couple-name cover">Desri<br>&amp;<br>David</h1>
-      <p class="wedding-date">Pemberkatan: 17.7.2025<br />Adat: 19.7.2025</p>
+      <h1 class="couple-name cover">David<br>&amp;<br>Desri</h1>
+      <div class="wedding-date">
+        <div class="wedding-event">
+          <span class="event-label">Pemberkatan:</span>
+          <span class="event-date">17 Juli 2025</span>
+        </div>
+        <div class="wedding-event">
+          <span class="event-label">Adat:</span>
+          <span class="event-date">19 Juli 2025</span>
+        </div>
+      </div>
+      <div class="scroll-down">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+      </div>
     </section>
 
 
@@ -63,74 +73,81 @@
       <h2 class="bride-groom-title">Dengan sukacita, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:</h2>
       <div class="bride-groom-pair">
         <!-- Mempelai Pria -->
-        <div class="groom">
-          <img src="assets/images/bg.JPG" alt="Foto David" class="bride-groom-photo" />
-          <h3 class="bride-groom-name">David Ideal Mendrofa, S.Ak</h3>
-          <p class="bride-groom-detail">
-            Putra ketiga dari:<br />
-            Bapak Haogolala Mendrofa<br />
-            & Ibu Lutiami Gaido<br />
-            <em>(A/I. Krista Mendrofa)</em>
-          </p>
-        </div>
-        <!-- Mempelai Wanita -->
-        <div class="bride">
-          <img src="assets/images/bg.JPG" alt="Foto Desri" class="bride-groom-photo" />
-          <h3 class="bride-groom-name">Desri Ani Fersari Waruwu, S.Kom</h3>
-          <p class="bride-groom-detail">
-            Putri ketiga dari:<br />
-            Bapak Abiyudi Waruwu<br />
-            & Ibu Yunimasi Mendrofa<br />
-            <em>(A/I. Tian Waruwu)</em>
-          </p>
-        </div>
+      <div class="groom">
+        <img src="../assets/images/bg.JPG" alt="Foto David" class="bride-groom-photo" />
+        <h3 class="bride-groom-name">David Ideal Mendrofa, S.Ak</h3>
+        <p class="bride-groom-detail">
+          Putra ketiga dari:<br />
+          Bapak Haogolala Mendrofa<br />
+          & Ibu Lutiami Gaido<br />
+          <em>(A/I. Krista Mendrofa)</em>
+        </p>
+      </div>
+
+      <!-- Simbol & -->
+      <div class="and-symbol">
+        <h1>&</h1>
+      </div>
+
+      <!-- Mempelai Wanita -->
+      <div class="bride">
+        <img src="../assets/images/bg.JPG" alt="Foto Desri" class="bride-groom-photo" />
+        <h3 class="bride-groom-name">Desri Ani Fersari Waruwu, S.Kom</h3>
+        <p class="bride-groom-detail">
+          Putri ketiga dari:<br />
+          Bapak Abiyudi Waruwu<br />
+          & Ibu Yunimasi Mendrofa<br />
+          <em>(A/I. Tian Waruwu)</em>
+        </p>
+      </div>
+
       </div>
     </section>
 
-    <!-- SECTION 3: Save The Date -->
-    <section id="save-the-date" class="section-akad fade-in-section">
-      <h2 class="section-title">Save the Date</h2>
+<!-- SECTION: Save The Date -->
+<section id="save-the-date" class="section-akad fade-in-section">
+  <h2 class="section-title">Save the Date</h2>
 
-      <!-- COUNTDOWN -->
-      <div class="countdown-container">
-        <div class="countdown-box"><span id="days">0</span><small>Hari</small></div>
-        <div class="countdown-box"><span id="hours">0</span><small>Jam</small></div>
-        <div class="countdown-box"><span id="minutes">0</span><small>Menit</small></div>
-        <div class="countdown-box"><span id="seconds">0</span><small>Detik</small></div>
-      </div>
+  <!-- COUNTDOWN -->
+  <div class="countdown-container">
+    <div class="countdown-box"><span id="days">0</span><small>Hari</small></div>
+    <div class="countdown-box"><span id="hours">0</span><small>Jam</small></div>
+    <div class="countdown-box"><span id="minutes">0</span><small>Menit</small></div>
+    <div class="countdown-box"><span id="seconds">0</span><small>Detik</small></div>
+  </div>
 
-      <!-- INFO PEMBERKATAN -->
-      <h2 class="section-title">Pemberkatan Nikah</h2>
-      <p><strong>Hari / Tanggal:</strong> Kamis, 17 Juli 2025</p>
-      <p><strong>Waktu:</strong> 10.00 WIB – Selesai</p>
-      <p><strong>Tempat:</strong> Gereja BNKP Jemaat Betania</p>
+  <!-- INFO PEMBERKATAN -->
+  <div class="sub-event">
+    <h2 class="section-title">Pemberkatan Nikah</h2>
+    <p><strong>Hari / Tanggal:</strong> Kamis, 17 Juli 2025</p>
+    <p><strong>Waktu:</strong> 10.00 WIB – Selesai</p>
+    <p><strong>Tempat:</strong> Gereja BNKP Jemaat Betania</p>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.877795886581!2d97.64303677435038!3d1.244098161907935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3025fcfc9e889a59%3A0x6a22fcdda3165bb1!2sGereja%20BNKP%20Jemaat%20Betania!5e0!3m2!1sid!2sid!4v1751110987663!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
 
-      <!-- INFO ADAT -->
-      <h2 class="section-title">Acara Adat</h2>
-      <p><strong>Hari / Tanggal:</strong> Sabtu, 19 Juli 2025</p>
-      <p><strong>Waktu:</strong> 13.00 WIB – Selesai</p>
-      <p><strong>Tempat:</strong> Gedung Serbaguna Salak Madu</p>
-    </section>
+  <!-- INFO ADAT -->
+  <div class="sub-event">
+    <h2 class="section-title">Acara Adat</h2>
+    <p><strong>Hari / Tanggal:</strong> Sabtu, 19 Juli 2025</p>
+    <p><strong>Waktu:</strong> 13.00 WIB – Selesai</p>
+    <p><strong>Tempat:</strong> Gedung Serbaguna Salak Madu</p>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.884666304028!2d97.62966477435035!3d1.2395456619217675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3025fdf94301cb9d%3A0x5412479ffeb3b55!2sGedung%20Serbaguna%20Salak%20Madu!5e0!3m2!1sid!2sid!4v1750750122400!5m2!1sid!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
 
-
-    <!-- SECTION 4: Lokasi (Map) -->
-    <section class="section-location fade-in-section">
-      <h2 class="section-title">Lokasi Acara</h2>
-      <p>Pemberkatan: Gereja BNKP Jemaat Betania</p>
-      <p>Adat: Gedung Serbaguna Salak Madu</p>
-      <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.884666304028!2d97.62966477435035!3d1.2395456619217675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3025fdf94301cb9d%3A0x5412479ffeb3b55!2sGedung%20Serbaguna%20Salak%20Madu!5e0!3m2!1sid!2sid!4v1750750122400!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </section>
 
     <!-- SECTION 5: Galeri -->
     <section id="galeri" class="section-gallery fade-in-section">
       <h2 class="section-title">Galeri</h2>
       <div class="gallery-grid">
-        <img src="assets/images/galeri1.JPG" alt="Galeri 1" />
-        <img src="assets/images/galeri2.JPG" alt="Galeri 2" />
-        <img src="assets/images/galeri3.JPG" alt="Galeri 3" />
-        <img src="assets/images/galeri4.JPG" alt="Galeri 4" />
+        <img src="../assets/images/galeri1.JPG" alt="Galeri 1" />
+        <img src="../assets/images/galeri2.JPG" alt="Galeri 2" />
+        <img src="../assets/images/galeri3.JPG" alt="Galeri 3" />
+        <img src="../assets/images/galeri4.JPG" alt="Galeri 4" />
       </div>
       <!-- Modal untuk tampilan besar -->
       <div id="modal" class="modal">
@@ -139,74 +156,88 @@
       </div>
     </section>
 
-    <!-- SECTION 6: Ucapan -->
-    <section id="ucapan" class="section-rsvp fade-in-section">
-      <h2 class="section-title">Ucapan & Kehadiran</h2>
-
-      <form id="ucapan-form" class="ucapan-form">
-        <input type="text" id="nama-pengirim" placeholder="Nama Anda" required />
-        <textarea id="pesan-ucapan" placeholder="Tulis ucapan..." required></textarea>
-        <button type="submit">Kirim Ucapan</button>
-      </form>
-
-      <div id="list-ucapan" class="ucapan-list">
-        <!-- Ucapan akan ditambahkan di sini -->
-      </div>
-    </section>
-
     <section id="gift" class="section-gift fade-in-section">
-      <h2 class="section-title">Gift</h2>
-      <p>Doa restu Anda adalah hadiah terindah. Namun jika ingin memberi tanda kasih, berikut rekening yang dapat digunakan:</p>
+  <div class="gift-icon">
+    <i class="fa-solid fa-gift"></i>
+  </div>
+  <h2 class="gift-title">Wedding Gift</h2>
+  <p class="gift-description">
+    Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
+  </p>
 
-      <div class="gift-container">
+  <div class="gift-btn-wrapper">
+    <button id="toggle-gift-button" class="toggle-gift-btn">
+      <i class="fa-solid fa-gift"></i> Tampilkan Rekening
+    </button>
+  </div>
 
-        <!-- Kartu BCA -->
-        <div class="gift-card">
-          <img src="assets/images/bca.png" alt="BCA" class="bank-logo" />
-          <h3>1234567890</h3>
-          <p>a.n. Desri Ani Fersari Waruwu</p>
-        </div>
+  <div id="gift-details" class="gift-container hidden">
+    <!-- BCA -->
+    <div class="gift-card-new">
+      <img src="../assets/images/bca.png" alt="BCA" class="bank-logo" />
+      <hr class="gift-divider" />
+      <p class="gift-label">No. Rekening</p>
+      <p class="gift-rek">1234567890</p>
+      <button class="copy-btn" onclick="copyToClipboard('1234567890')">Copy No. Rekening</button>
+      <p class="gift-an">a.n. David Ideal Mendrofa</p>
+    </div>
 
-        <!-- Kartu Mandiri -->
-        <div class="gift-card">
-          <img src="assets/images/mandiri.png" alt="Mandiri" class="bank-logo" />
-          <h3>9876543210</h3>
-          <p>a.n. David Ideal Mendrofa</p>
-        </div>
+    <!-- Mandiri -->
+    <div class="gift-card-new">
+      <img src="../assets/images/mandiri.png" alt="Mandiri" class="bank-logo" />
+      <hr class="gift-divider" />
+      <p class="gift-label">No. Rekening</p>
+      <p class="gift-rek">9876543210</p>
+      <button class="copy-btn" onclick="copyToClipboard('9876543210')">Copy No. Rekening</button>
+      <p class="gift-an">a.n. Desri Ani Fersari Waruwu</p>
+    </div>
+  </div>
+</section>
 
-      </div>
 
-      <p class="gift-note">Terima kasih atas doa dan restunya 🙏</p>
+    <section id="ucapan" class="section-rsvp fade-in-section">
+      <h2 class="section-title">Wishes</h2>
+      <div id="ucapan-counter" class="ucapan-counter"></div>
+
+     <form id="ucapan-form" class="ucapan-form">
+      <input type="text" id="nama-pengirim" placeholder="Your Name" required />
+      <textarea id="pesan-ucapan" placeholder="Write your wish..." required></textarea>
+      <button type="submit">Send Wish</button>
+    </form>
+
+    <div class="ucapan-wrapper">
+      <div id="list-ucapan" class="ucapan-list"></div>
+      <div id="pagination" class="pagination"></div>
+    </div>
     </section>
-
 
     <!-- SECTION 7: Penutup -->
     <section class="section-penutup fade-in-section">
-      <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
-      <p class="penutup-nama">Desri & David</p>
-    </section>
-  </div>
+      <div class="penutup-content">
+        <p class="penutup-ucapan">
+          Terima kasih atas doa, dukungan, dan kehadiran Bapak/Ibu/Saudara/i. <br />
+          Semoga cinta kasih selalu menyertai kita semua.
+        </p>
 
-  <!-- FLOATING NAVIGATION -->
-  <div id="floating-nav" style="display: none;">
-    <div class="floating-button">
-      <button onclick="scrollToSection('mempelai')"><i class="fa fa-heart"></i></button>
-      <button onclick="scrollToSection('save-the-date')"><i class="fa fa-calendar"></i></button>
-      <button onclick="scrollToSection('gift')"><i class="fa fa-gift"></i></button>
-      <button onclick="scrollToSection('galeri')"><i class="fa fa-image"></i></button>
-      <button onclick="scrollToSection('ucapan')"><i class="fa fa-comment"></i></button>
-    </div>
+        <div class="penutup-nama-container">
+          <p class="penutup-nama">David</p>
+          <p class="dan">&</p>
+          <p class="penutup-nama">Desri</p>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <!-- Audio Toggle Button -->
-<div id="audio-toggle" class="audio-toggle" style="display: none;">
-  <i id="audio-icon" class="fa-solid fa-volume-high"></i>
-</div>
+  <div id="audio-toggle" class="audio-toggle" style="display: none;">
+    <i id="audio-icon" class="fa-solid fa-volume-high"></i>
+  </div>
 
-  <div id="falling-effects"></div>
+  <!-- <div id="falling-effects"></div> -->
 
   <!-- SCRIPT -->
-  <script src="script-index.js"></script>
+  <script src="/script-index.js"></script>
   <!-- <script src="script-music.js"></script> -->
 </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Tambah Tamu Undangan</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1><i class="fa-solid fa-user-plus"></i> Tambah Tamu Undangan</h1>
+
+   <form id="form-tamu">
+    <label for="nama-tamu">Nama Tamu</label>
+    <input type="text" id="nama-tamu" placeholder="Misal: Miguel dan Partner" required>
+
+    <button type="submit"><i class="fa-solid fa-paper-plane"></i> Simpan Tamu</button>
+  </form>
+
+    <div id="result" class="result" style="display: none;"></div>
+    <div id="url-preview" class="url-preview"></div>
+
+    <h2>Daftar Seluruh Tamu</h2>
+    <table id="tabel-tamu">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Link</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="tabel-tamu-body">
+        <!-- Diisi via admin.js -->
+      </tbody>
+    </table>
+    <!-- <button id="kirim-whatsapp"><i class="fa-brands fa-whatsapp"></i> Kirim ke WhatsApp</button> -->
+
+
+  </div>
+
+  <!-- JS -->
+  <script src="admin.js"></script>
+  <script src="script-index.js"></script>
+</body>
+</html>
