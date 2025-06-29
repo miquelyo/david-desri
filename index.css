@@ -1201,7 +1201,7 @@ html, body {
 .section-penutup {
   height: 100vh;
   padding: 20px;
-  background: url('assets/images/galeri2.jpg') center center / cover no-repeat;
+  background: url('assets/images/galeri2.JPG') center center / cover no-repeat;
   color: white;
   display: flex;
   flex-direction: column;
