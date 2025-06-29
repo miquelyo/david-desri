@@ -31,7 +31,7 @@ html, body {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url('../assets/images/ws.JPG');
+  background-image: url('assets/images/ws.JPG');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -108,7 +108,7 @@ html, body {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background-image: url('../assets/images/frame.png');
+  background-image: url('assets/images/frame.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -280,7 +280,7 @@ html, body {
 .cover-section {
   min-height: 100vh;
   width: 100%;
-  background-image: url('../assets/images/galeri2.JPG');
+  background-image: url('assets/images/galeri2.JPG');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
