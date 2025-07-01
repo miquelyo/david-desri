@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Undangan Desri & David</title>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
-  <!-- Supabase -->
+
+  <!-- Supabase & Animations -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <!-- CDN ANIMATIONS-->
   <script src="https://unpkg.com/useanimations@1.7.9/dist/useAnimations.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
-  <!-- Lottie Player CDN -->
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Open Graph Meta Tags -->
+
+  <!-- Open Graph Meta -->
   <meta property="og:title" content="The Wedding Of David & Desri" />
   <meta property="og:description" content="Dengan penuh sukacita, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam hari bahagia kami." />
   <meta property="og:image" content="https://miquelyo.github.io/wedding-invitationV2/assets/images/galeri2.JPG" />
@@ -26,126 +29,217 @@
   <meta property="og:type" content="website" />
 
   <!-- CSS -->
-  <link rel="stylesheet" href="index.css" />
+  <!-- <link rel="stylesheet" href="index.css" /> -->
+  <link rel="stylesheet" href="assets/css/another.css">
+  <link rel="stylesheet" href="assets/css/welcome.css">
+  <link rel="stylesheet" href="assets/css/cover.css">
+  <link rel="stylesheet" href="assets/css/mempelai.css">
+  <link rel="stylesheet" href="assets/css/date.css">
+  <link rel="stylesheet" href="assets/css/galeri.css">
+  <link rel="stylesheet" href="assets/css/galeri.css">
+  <link rel="stylesheet" href="assets/css/gift.css">
+  <link rel="stylesheet" href="assets/css/wish.css">
+  <link rel="stylesheet" href="assets/css/penutup.css">
+  <link rel="stylesheet" href="assets/css/alkitab.css">
+  <link rel="stylesheet" href="assets/css/rsvp.css">
 </head>
 <body>
 
-  <!-- AUDIO -->
-  <audio id="bg-music" src="assets/audio/backsound2.mp3" loop></audio>
+  <!-- Audio Backsound -->
+  <audio id="bg-music" src="assets/audio/backsound.mp3" loop></audio>
 
-  <!-- Welcome Screen -->
-  <div id="welcome-screen">
-  <p class="wedding-of zoom-in">The Wedding of</p>
-  <h1 class="couple-name couple-name-full zoom-in">David & Desri</h1>
+  <!-- SECTION 1: Welcome Screen -->
+  <div id="welcome-screen" class="slide-down">
+    <p class="wedding-of zoom-in" style="animation-delay: 0.5;">The Wedding of</p>
+    <h1 class="couple-name-full zoom-in" style="animation-delay: 0.5;">David & Desri</h1>
+    <div class="welcome-spacer"></div>
+    <p class="invite-text zoom-in" style="animation-delay: 0.5;">Dear:</p>
+    <h2 id="guest-name" class="zoom-in" style="animation-delay: 0.5;">Tamu Undangan</h2>
+    <button id="open-button" class="open-button zoom-in" style="animation-delay: 0.5;">
+      <i class="fa-solid fa-envelope"></i> Buka Undangan
+    </button>
+    <div id="sparkle-layer"></div>
+  </div>
 
-  <div class="welcome-spacer"></div>
-
-  <p class="invite-text zoom-in">Dear:</p>
-  <h2 id="guest-name" class="zoom-in">Tamu Undangan</h2>
-
-  <button id="open-button" class="open-button zoom-in">
-    <i class="fa-solid fa-envelope"></i> Buka Undangan
-  </button>
-
-  <div id="sparkle-layer"></div>
-</div>
-
-
-  <!-- ISI UNDANGAN -->
+   <!-- ISI UNDANGAN -->
   <div id="invitation-sections" style="display: none;">
 
-    <!-- SECTION 1: COVER -->
-    <section id="cover" class="cover-section fade-in-section">
-      <h2 class="wedding-of">The Wedding Of</h2>
-      <h1 class="couple-name cover">David<br>&amp;<br>Desri</h1>
-      <div class="wedding-date">
-        <div class="wedding-event">
-          <span class="event-label">Pemberkatan:</span>
-          <span class="event-date">17 Juli 2025</span>
+    <!-- SECTION 2: Cover -->
+    <section id="cover" class="cover-section">
+      <div class="cover-slider-wrapper">
+        <div class="cover-slider">
+          <div class="slide" style="background-image: url('assets/images/galeri1.JPG');"></div>
+          <div class="slide" style="background-image: url('assets/images/galeri2.JPG');"></div>
+          <div class="slide" style="background-image: url('assets/images/galeri3.JPG');"></div>
         </div>
-        <div class="wedding-event">
-          <span class="event-label">Adat:</span>
-          <span class="event-date">19 Juli 2025</span>
+      </div>
+      <h2 class="wedding-of">The Wedding Of</h2>
+      <h1 class="couple-name cover">David &amp; Desri</h1>
+      <div class="cover-countdown-wrapper">
+        <div class="cover-countdown">
+          <div><span id="cover-days">00</span><small>Hari</small></div>
+          <div><span id="cover-hours">00</span><small>Jam</small></div>
+          <div><span id="cover-minutes">00</span><small>Menit</small></div>
+          <div><span id="cover-seconds">00</span><small>Detik</small></div>
+        </div>
+        <div class="cover-date-save">
+          <div class="wedding-date">28/06/2025</div>
+          <a href="#save-the-date" class="save-date-btn">
+            <i class="fa-regular fa-calendar-check"></i> Save The Date
+          </a>
         </div>
       </div>
       <div class="scroll-down">
-        <div class="mouse">
-          <div class="wheel"></div>
-        </div>
+        <div class="mouse"><div class="wheel"></div></div>
       </div>
+      <div class="cover-gradient-overlay"></div>
     </section>
 
 
-    <!-- SECTION 2: Calon Mempelai -->
+    <!-- SECTION 3: Calon Mempelai -->
     <section id="mempelai" class="bride-groom-section fade-in-section">
       <h2 class="bride-groom-title">Dengan sukacita, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:</h2>
       <div class="bride-groom-pair">
         <!-- Mempelai Pria -->
-      <div class="groom">
-        <img src="assets/images/bg.JPG" alt="Foto David" class="bride-groom-photo" />
-        <h3 class="bride-groom-name">David Ideal Mendrofa, S.Ak</h3>
-        <p class="bride-groom-detail">
-          Putra ketiga dari:<br />
-          Bapak Haogolala Mendrofa<br />
-          & Ibu Lutiami Gaido<br />
-          <em>(A/I. Krista Mendrofa)</em>
-        </p>
-      </div>
+        <div class="groom">
+          <img src="assets/images/bg.JPG" alt="Foto David" class="bride-groom-photo" />
+          <h3 class="bride-groom-name">David Ideal Mendrofa, S.Ak</h3>
+          <p class="bride-groom-detail">
+            Putra ketiga dari:<br />
+            Bapak Haogolala Mendrofa<br />
+            & Ibu Lutiami Gaido<br />
+            <em>(A/I. Krista Mendrofa)</em>
+          </p>
+        </div>
 
-      <!-- Simbol & -->
-      <div class="and-symbol">
-        <h1>&</h1>
-      </div>
+        <!-- Simbol & -->
+        <div class="and-symbol"><h1>&</h1></div>
 
-      <!-- Mempelai Wanita -->
-      <div class="bride">
-        <img src="assets/images/bg.JPG" alt="Foto Desri" class="bride-groom-photo" />
-        <h3 class="bride-groom-name">Desri Ani Fersari Waruwu, S.Kom</h3>
-        <p class="bride-groom-detail">
-          Putri ketiga dari:<br />
-          Bapak Abiyudi Waruwu<br />
-          & Ibu Yunimasi Mendrofa<br />
-          <em>(A/I. Tian Waruwu)</em>
-        </p>
-      </div>
-
+        <!-- Mempelai Wanita -->
+        <div class="bride">
+          <img src="assets/images/bg.JPG" alt="Foto Desri" class="bride-groom-photo" />
+          <h3 class="bride-groom-name">Desri Ani Fersari Waruwu, S.Kom</h3>
+          <p class="bride-groom-detail">
+            Putri ketiga dari:<br />
+            Bapak Abiyudi Waruwu<br />
+            & Ibu Yunimasi Mendrofa<br />
+            <em>(A/I. Tian Waruwu)</em>
+          </p>
+        </div>
       </div>
     </section>
 
-<!-- SECTION: Save The Date -->
-<section id="save-the-date" class="section-akad fade-in-section">
-  <h2 class="section-title">Save the Date</h2>
+    <!-- SECTION AYAT ALKITAB -->
+    <section id="ayat" class="section-ayat fade-in-section">
+      <div class="ring-wrapper">
+        <img src="assets/images/cincin.png" alt="Cincin" class="ring-image" />
+      </div>
 
-  <!-- COUNTDOWN -->
-  <div class="countdown-container">
-    <div class="countdown-box"><span id="days">0</span><small>Hari</small></div>
-    <div class="countdown-box"><span id="hours">0</span><small>Jam</small></div>
-    <div class="countdown-box"><span id="minutes">0</span><small>Menit</small></div>
-    <div class="countdown-box"><span id="seconds">0</span><small>Detik</small></div>
-  </div>
+      <div class="ayat-container">
+        <p class="ayat-text">
+          "sehingga keduanya itu menjadi satu daging. Demikianlah mereka bukan lagi dua, melainkan satu" <br />
+          <span class="ayat-sumber">— Markus 10:8</span>
+        </p>
+      </div>
+    </section>
 
-  <!-- INFO PEMBERKATAN -->
-  <div class="sub-event">
-    <h2 class="section-title">Pemberkatan Nikah</h2>
-    <p><strong>Hari / Tanggal:</strong> Kamis, 17 Juli 2025</p>
-    <p><strong>Waktu:</strong> 10.00 WIB – Selesai</p>
-    <p><strong>Tempat:</strong> Gereja BNKP Jemaat Betania</p>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.877795886581!2d97.64303677435038!3d1.244098161907935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3025fcfc9e889a59%3A0x6a22fcdda3165bb1!2sGereja%20BNKP%20Jemaat%20Betania!5e0!3m2!1sid!2sid!4v1751110987663!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- SECTION 4: Save The Date -->
+    <section id="save-the-date" class="section-akad fade-in-section">
+
+    <!-- Tambahkan div baru khusus background -->
+    <div class="save-date-highlight">
+      <h2 class="section-title">
+        Save the Date <br />
+        <span class="section-subtitle-emphasis">Untuk Hari Bahagia Kami</span>
+      </h2>
+
+      <!-- Countdown -->
+      <div class="countdown-container">
+        <div class="countdown-box glass">
+          <span id="days">0</span><small>Hari</small>
+        </div>
+        <div class="countdown-box glass">
+          <span id="hours">0</span><small>Jam</small>
+        </div>
+        <div class="countdown-box glass">
+          <span id="minutes">0</span><small>Menit</small>
+        </div>
+        <div class="countdown-box glass">
+          <span id="seconds">0</span><small>Detik</small>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- INFO ADAT -->
-  <div class="sub-event">
-    <h2 class="section-title">Acara Adat</h2>
-    <p><strong>Hari / Tanggal:</strong> Sabtu, 19 Juli 2025</p>
-    <p><strong>Waktu:</strong> 13.00 WIB – Selesai</p>
-    <p><strong>Tempat:</strong> Gedung Serbaguna Salak Madu</p>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.884666304028!2d97.62966477435035!3d1.2395456619217675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3025fdf94301cb9d%3A0x5412479ffeb3b55!2sGedung%20Serbaguna%20Salak%20Madu!5e0!3m2!1sid!2sid!4v1750750122400!5m2!1sid!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </div>
-</section>
+      <h2 class="section-subtitle">Rangkaian Acara Pernikahan</h2>
+
+      <!-- Info Wamozi Aramba -->
+      <div class="sub-event-new">
+        <div class="sub-event-left">
+          <span class="event-title-vertical">Wamozi Aramba</span>
+        </div>
+        <div class="sub-event-right">
+          <p class="event-day">Sabtu</p>
+          <h1 class="event-date">12</h1>
+          <p class="event-month-year">Juli 2025</p>
+          <p class="event-time">13.00 WIB - Selesai</p>
+          <div class="event-location">
+            <a href="https://maps.google.com/?q=Jl.+Teluk+Dalam+No.+122,+Perumnas+Fodo,+Desa+Fodo,+Gunungsitoli+Selatan" target="_blank">
+              <i class="fa-solid fa-map-location-dot clickable-map-icon"></i>
+            </a>
+            <p>
+              Bertempat di: <br />
+              <strong>Jl. Teluk Dalam No. 122, Perumnas Fodo</strong><br />
+              Desa Fodo, Gunungsitoli Selatan, Kota Gunungsitoli
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Pemberkatan -->
+      <div class="sub-event-new">
+        <div class="sub-event-left">
+          <span class="event-title-vertical">Pemberkatan</span>
+        </div>
+        <div class="sub-event-right">
+          <p class="event-day">Kamis</p>
+          <h1 class="event-date">17</h1>
+          <p class="event-month-year">Juli 2025</p>
+          <p class="event-time">10.00 WIB - Selesai</p>
+          <div class="event-location">
+            <a href="https://maps.google.com/?q=Gereja+BNKP+Jemaat+Hiligodu" target="_blank">
+              <i class="fa-solid fa-map-location-dot clickable-map-icon"></i>
+            </a>
+            <p>
+              Bertempat di: <br />
+              <strong>Gereja BNKP Jemaat Betania</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Adat -->
+      <div class="sub-event-new">
+        <div class="sub-event-left">
+          <span class="event-title-vertical">Acara Adat</span>
+        </div>
+        <div class="sub-event-right">
+          <p class="event-day">Sabtu</p>
+          <h1 class="event-date">19</h1>
+          <p class="event-month-year">Juli 2025</p>
+          <p class="event-time">13.00 WIB - Selesai</p>
+          <div class="event-location">
+            <a href="https://maps.google.com/?q=Gedung+Serbaguna+Salak+Madu" target="_blank">
+              <i class="fa-solid fa-map-location-dot clickable-map-icon"></i>
+            </a>
+            <p>
+              Bertempat di: <br />
+              <strong>Gedung Serbaguna Salak Madu</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
 
 
     <!-- SECTION 5: Galeri -->
@@ -157,76 +251,119 @@
         <img src="assets/images/galeri3.JPG" alt="Galeri 3" />
         <img src="assets/images/galeri4.JPG" alt="Galeri 4" />
       </div>
-      <!-- Modal untuk tampilan besar -->
+      <!-- Modal -->
       <div id="modal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modal-img" />
       </div>
     </section>
 
+    <!-- SECTION 6: Wedding Gift -->
     <section id="gift" class="section-gift fade-in-section">
-  <div class="gift-icon">
-    <i class="fa-solid fa-gift"></i>
-  </div>
-  <h2 class="gift-title">Wedding Gift</h2>
-  <p class="gift-description">
-    Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
-  </p>
+      <div class="gift-icon"><i class="fa-solid fa-gift"></i></div>
+      <h2 class="gift-title">Wedding Gift</h2>
+      <p class="gift-description">
+        Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
+      </p>
 
-  <div class="gift-btn-wrapper">
-    <button id="toggle-gift-button" class="toggle-gift-btn">
-      <i class="fa-solid fa-gift"></i> Tampilkan Rekening
-    </button>
-  </div>
+      <div class="gift-btn-wrapper">
+        <button id="toggle-gift-button" class="toggle-gift-btn">
+          <i class="fa-solid fa-gift"></i> Tampilkan Rekening
+        </button>
+      </div>
 
-  <div id="gift-details" class="gift-container hidden">
-    <!-- BCA -->
-    <div class="gift-card-new">
-      <img src="assets/images/bca.png" alt="BCA" class="bank-logo" />
-      <hr class="gift-divider" />
-      <p class="gift-label">No. Rekening</p>
-      <p class="gift-rek">1234567890</p>
-      <button class="copy-btn" onclick="copyToClipboard('1234567890')">Copy No. Rekening</button>
-      <p class="gift-an">a.n. David Ideal Mendrofa</p>
-    </div>
+      <div id="gift-details" class="gift-container hidden">
+        <!-- BCA -->
+        <div class="gift-card-new">
+          <img src="assets/images/bca.png" alt="BCA" class="bank-logo" />
+          <hr class="gift-divider" />
+          <p class="gift-label">No. Rekening</p>
+          <p class="gift-rek">1234567890</p>
+          <button class="copy-btn" onclick="copyToClipboard('1234567890')">Copy No. Rekening</button>
+          <p class="gift-an">a.n. David Ideal Mendrofa</p>
+        </div>
 
-    <!-- Mandiri -->
-    <div class="gift-card-new">
-      <img src="assets/images/mandiri.png" alt="Mandiri" class="bank-logo" />
-      <hr class="gift-divider" />
-      <p class="gift-label">No. Rekening</p>
-      <p class="gift-rek">9876543210</p>
-      <button class="copy-btn" onclick="copyToClipboard('9876543210')">Copy No. Rekening</button>
-      <p class="gift-an">a.n. Desri Ani Fersari Waruwu</p>
-    </div>
-  </div>
-</section>
-
-
-    <section id="ucapan" class="section-rsvp fade-in-section">
-      <h2 class="section-title">Wishes</h2>
-      <div id="ucapan-counter" class="ucapan-counter"></div>
-
-     <form id="ucapan-form" class="ucapan-form">
-      <input type="text" id="nama-pengirim" placeholder="Your Name" required />
-      <textarea id="pesan-ucapan" placeholder="Write your wish..." required></textarea>
-      <button type="submit">Send Wish</button>
-    </form>
-
-    <div class="ucapan-wrapper">
-      <div id="list-ucapan" class="ucapan-list"></div>
-      <div id="pagination" class="pagination"></div>
-    </div>
+        <!-- Mandiri -->
+        <div class="gift-card-new">
+          <img src="assets/images/bri.png" alt="BRI" class="bank-logo" />
+          <hr class="gift-divider" />
+          <p class="gift-label">No. Rekening</p>
+          <p class="gift-rek">3378010169575080</p>
+          <button class="copy-btn" onclick="copyToClipboard('337801016957508')">Copy No. Rekening</button>
+          <p class="gift-an">a.n. Desri Ani Fersari Waruwu</p>
+        </div>
+      </div>
     </section>
 
-    <!-- SECTION 7: Penutup -->
+    <!-- SECTION 7: Wishes / Ucapan -->
+    <section id="ucapan" class="section-rsvp fade-in-section">
+      <h2 class="section-title">Wishes</h2>
+      <p class="section-subtitle">Give Your Wishes to us</p>
+
+      <div id="ucapan-counter" class="ucapan-counter"></div>
+
+      <form id="ucapan-form" class="ucapan-form">
+        <input type="text" id="nama-pengirim" placeholder="Your Name" required />
+        <textarea id="pesan-ucapan" placeholder="Write your wish..." required></textarea>
+        <button type="submit">Send Wish</button>
+      </form>
+
+      <div class="ucapan-wrapper">
+        <div id="list-ucapan" class="ucapan-list"></div>
+        <div id="pagination" class="pagination"></div>
+      </div>
+    </section>
+
+
+    <!-- SECTION RSVP-->
+    <section id="rsvp" class="section-rsvp-confirm fade-in-section">
+      <h2 class="section-title">RSVP</h2>
+      <p class="rsvp-text">
+        Kami mengharapkan kehadiranmu di hari bahagia kami. Silakan isi form berikut:
+      </p>
+
+      <div class="rsvp-card">
+        <form id="rsvp-form" class="rsvp-form">
+          <input type="text" placeholder="Nama" required />
+          <select name="jumlah" class="custom-select" required>
+            <option value="" disabled selected>Jumlah </option>
+            <option value="1">1 Orang</option>
+            <option value="2">2 Orang</option>
+            <option value="3">3 Orang</option>
+            <option value="4">4 Orang</option>
+            <option value="5">5 Orang</option>
+            <option value="6">6 Orang</option>
+            <option value="7">7 Orang</option>
+            <option value="8">8 Orang</option>
+            <option value="9">9 Orang</option>
+            <option value="10">10 Orang</option>
+          </select>
+          <textarea placeholder="Tulis pesan atau ucapan..." rows="3"></textarea>
+          <div class="radio-group">
+            <label class="custom-radio">
+              <input type="radio" name="konfirmasi" value="hadir" required />
+              <span class="radio-check"></span>
+              Ya, Saya Bersedia Hadir
+            </label>
+            <label class="custom-radio">
+              <input type="radio" name="konfirmasi" value="tidak-hadir" />
+              <span class="radio-check"></span>
+              Maaf, Saya Tidak Bisa Hadir
+            </label>
+          </div>
+          <button type="submit">Kirim</button>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- SECTION 8: Penutup -->
     <section class="section-penutup fade-in-section">
       <div class="penutup-content">
         <p class="penutup-ucapan">
           Terima kasih atas doa, dukungan, dan kehadiran Bapak/Ibu/Saudara/i. <br />
           Semoga cinta kasih selalu menyertai kita semua.
         </p>
-
         <div class="penutup-nama-container">
           <p class="penutup-nama">David</p>
           <p class="dan">&</p>
@@ -234,17 +371,15 @@
         </div>
       </div>
     </section>
-
   </div>
-
-  <!-- Audio Toggle Button -->
+ 
+  <!-- Audio Toggle -->
   <div id="audio-toggle" class="audio-toggle" style="display: none;">
     <i id="audio-icon" class="fa-solid fa-volume-high"></i>
   </div>
 
-  <!-- <div id="falling-effects"></div> -->
-
-  <!-- SCRIPT -->
+  <!-- Main JS -->
   <script src="script-index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

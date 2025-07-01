@@ -1,0 +1,245 @@
+/* ================================
+   COVER SECTION (Halaman Utama)
+================================ */
+
+.cover-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 10;
+}
+
+/* SLIDER BACKGROUND */
+.cover-slider-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cover-slider {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  animation: slideShow 15s infinite ease-in-out;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes slideShow {
+  0%, 25% { transform: translateX(0); }
+  33%, 58% { transform: translateX(-100vw); }
+  66%, 91% { transform: translateX(-200vw); }
+  100% { transform: translateX(0); }
+}
+
+/* TEKS UTAMA */
+#cover .wedding-of,
+#cover .couple-name,
+#cover .scroll-down {
+  position: relative;
+  z-index: 2;
+}
+
+.cover-section .wedding-of {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.couple-name.cover {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
+  color: #fff;
+  margin: 20px 0 40px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+}
+
+/* SHADOW GRADIENT PUTIH EMAS */
+.cover-gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, #fff8e1 30%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* COUNTDOWN DI COVER */
+.cover-countdown-wrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+  position: relative;
+}
+
+.cover-countdown {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cover-countdown div {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  padding: 10px 16px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cover-countdown span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+}
+
+.cover-countdown small {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* TANGGAL DAN TOMBOL */
+.cover-date-save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+  z-index: 2;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.wedding-date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.save-date-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.save-date-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: #7b3f00;
+  border-color: #fff;
+}
+
+.save-date-btn i {
+  margin-right: 6px;
+}
+
+/* SCROLL INDICATOR */
+.scroll-down {
+  margin-top: 40px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.mouse {
+  width: 50px;
+  height: 90px;
+  border: 3px solid #fff;
+  border-radius: 30px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.wheel {
+  width: 8px;
+  height: 20px;
+  background: #fff;
+  border-radius: 4px;
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: wheel-move 1.5s infinite ease-in-out;
+}
+
+@keyframes wheel-move {
+  0% { top: 14px; opacity: 1; }
+  50% { top: 30px; opacity: 0.5; }
+  100% { top: 14px; opacity: 1; }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .couple-name.cover {
+    font-size: 3rem;
+  }
+
+  .cover-section .wedding-of {
+    font-size: 1.2rem;
+  }
+
+  .scroll-down {
+    bottom: 20px;
+  }
+
+  .cover-countdown span {
+    font-size: 1.2rem;
+  }
+
+  .wedding-date {
+    font-size: 1rem;
+  }
+
+  .save-date-btn {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+
+  .mouse {
+    width: 40px;
+    height: 70px;
+  }
+
+  .wheel {
+    width: 6px;
+    height: 16px;
+  }
+}

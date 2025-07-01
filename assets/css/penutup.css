@@ -1,0 +1,72 @@
+/* === PENUTUP === */
+.section-penutup {
+  height: 100vh;
+  padding: 20px;
+  background: url('../images/galeri2.JPG') center center / cover no-repeat;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-penutup::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; /* setengah bawah */
+  background: linear-gradient(to top, rgba(0, 0, 0, 5), transparent);
+  z-index: 1;
+}
+
+.penutup-content {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.penutup-ucapan {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: auto;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.penutup-nama-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.penutup-nama {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  margin: 0;
+  color: #a67c52;
+}
+
+.dan {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+
+.penutup-nama {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.dan {
+  font-size: 1.6rem;
+  margin: 10px 0;
+  color: #a67c52;
+}

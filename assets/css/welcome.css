@@ -1,0 +1,238 @@
+/* ================================
+   WELCOME SCREEN (Halaman Pembuka)
+================================= */
+
+#welcome-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('../images/ws.JPG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow: hidden;
+  padding: 60px 20px;
+}
+
+#welcome-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* efek gelap */
+  z-index: -1;
+}
+
+#welcome-screen::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+  z-index: 2;
+}
+
+/* Spacer (jarak bawah sebelum buka undangan) */
+.welcome-spacer {
+  height: 250px;
+}
+
+.zoom-in {
+  opacity: 0;
+  animation: zoomIn 1.2s ease-out forwards;
+}
+
+
+/* Teks "The Wedding of" */
+.wedding-of {
+  font-family: 'Poppins', cursive; /* Atau font lain sesuai selera */
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  margin-bottom: 10px;
+}
+
+/* Nama Pasangan */
+.couple-name-full {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* Teks Ucapan */
+.invite-text,
+#guest-name {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.invite-text {
+  font-size: 1rem;
+  margin-top: 25px;
+}
+
+#guest-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  animation: zoomIn 1.2s ease-out forwards;
+}
+
+/* Tombol Buka Undangan */
+#open-button {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 30px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.2),
+    0 6px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#open-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Shine Efek */
+#open-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shine 2.5s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+/* Animasi ZoomIn */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===========================
+   RESPONSIVE MEDIA QUERIES
+=========================== */
+@media screen and (max-width: 768px) {
+  #guest-name {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+
+  .invite-text {
+    font-size: 0.95rem;
+  }
+
+  #open-button {
+    padding: 10px 24px;
+    font-size: 15px;
+  }
+
+  .welcome-spacer {
+    height: 250px;
+  }
+
+  .couple-name-full {
+    font-size: 2.4rem;
+  }
+
+  .wedding-of {
+    font-size: 1.2rem;
+  }
+}
+
+
+#sparkle-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  fill: white;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px white);
+  animation: sparkleFall linear infinite;
+}
+
+@keyframes sparkleFall {
+  0% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-down {
+  animation: slideDown 1s ease-out forwards;
+}

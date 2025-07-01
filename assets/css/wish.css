@@ -1,0 +1,226 @@
+/* ================================
+   SECTION 7: Wishes / Ucapan
+================================ */
+
+.section-rsvp {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Judul dan Subjudul */
+.section-rsvp .section-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #3b3b3b;
+  margin-bottom: 5px;
+}
+
+.section-rsvp .section-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #a58c5c;
+  margin-bottom: 30px;
+}
+
+/* Counter Ucapan */
+.ucapan-counter {
+  font-size: 1rem;
+  color: #a58c5c;
+  margin-bottom: 25px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+/* ================================
+   FORM UCAPAN
+================================ */
+
+.ucapan-form {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ucapan-form input,
+.ucapan-form textarea {
+  padding: 14px 18px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.ucapan-form input:focus,
+.ucapan-form textarea:focus {
+  border-color: #a58c5c;
+  box-shadow: 0 0 0 3px rgba(165, 140, 92, 0.2);
+  outline: none;
+}
+
+.ucapan-form button {
+  padding: 12px 20px;
+  background-color: #a58c5c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.ucapan-form button:hover {
+  background-color: #8a734a;
+  transform: translateY(-2px);
+}
+
+/* ================================
+   DAFTAR UCAPAN
+================================ */
+
+.ucapan-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.ucapan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 400px; /* kamu bisa ubah misalnya 500px sesuai keinginan */
+  overflow-y: auto;
+  padding-right: 10px; /* biar scroll bar gak nutupin isi */
+  scroll-behavior: smooth;
+}
+
+
+/* CARD UCAPAN */
+.ucapan-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.ucapan-card .quote-icon {
+  font-size: 2rem;
+  color: #a58c5c;
+  margin-bottom: 10px;
+}
+
+.ucapan-card .ucapan-nama {
+  font-weight: 600;
+  color: #a58c5c;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+}
+
+.ucapan-card .verified-badge {
+  background-color: #a58c5c;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.ucapan-card .waktu {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 12px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ucapan-card .pesan {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  white-space: pre-line;
+  margin-bottom: 10px;
+}
+
+.ucapan-divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin-top: 20px;
+}
+
+/* ================================
+   PAGINATION
+================================ */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  background-color: #e8d7b5;
+  color: #444;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pagination button.active,
+.pagination button:hover {
+  background-color: #a58c5c;
+  color: #fff;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media screen and (max-width: 768px) {
+  .section-rsvp .section-title {
+    font-size: 2.4rem;
+  }
+
+  .ucapan-form input,
+  .ucapan-form textarea {
+    font-size: 0.95rem;
+  }
+
+  .ucapan-form button {
+    font-size: 0.95rem;
+  }
+
+  .ucapan-card .ucapan-nama {
+    font-size: 0.95rem;
+  }
+
+  .ucapan-card .pesan {
+    font-size: 0.9rem;
+  }
+}
+
+.ucapan-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ucapan-list::-webkit-scrollbar-thumb {
+  background-color: #a58c5c;
+  border-radius: 8px;
+}
+
+.ucapan-list::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}

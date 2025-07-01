@@ -143,22 +143,35 @@ const itemsPerPage = 5;
 
 // Fungsi tampilkan 1 ucapan
 function tampilkanUcapan({ name, message, created_at }) {
-  const tanggal = new Date(created_at).toLocaleDateString('id-ID', {
-    day: '2-digit', month: 'long', year: 'numeric'
-  });
-  const waktu = new Date(created_at).toLocaleTimeString('id-ID', {
-    hour: '2-digit', minute: '2-digit'
-  });
+  const timeAgo = getTimeAgo(created_at);
 
   const item = document.createElement('div');
-  item.classList.add('ucapan-item');
+  item.classList.add('ucapan-card');
   item.innerHTML = `
-    <p class="ucapan-nama">🕊️ <span>${name}</span></p>
-    <p class="ucapan-tanggal">${tanggal} - ${waktu}</p>
-    <p class="ucapan-pesan">“${message}”</p>
+    <div class="ucapan-header">
+      <span class="ucapan-nama"><strong>${name}</strong> <span class="verified-badge">✔</span></span>
+    </div>
+    <div class="ucapan-meta">– ${timeAgo}</div>
+    <p class="ucapan-pesan">${message}</p>
+    <hr class="ucapan-divider" />
   `;
   listUcapan.appendChild(item);
 }
+
+function getTimeAgo(timestamp) {
+  const now = new Date();
+  const past = new Date(timestamp);
+  const diff = Math.floor((now - past) / 1000); // detik
+
+  if (diff < 60) return 'Baru saja';
+  if (diff < 3600) return `${Math.floor(diff / 60)} menit yang lalu`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)} jam yang lalu`;
+  if (diff < 604800) return `${Math.floor(diff / 86400)} hari yang lalu`;
+  return past.toLocaleDateString('id-ID', {
+    day: 'numeric', month: 'long', year: 'numeric'
+  });
+}
+
 
 // Tampilkan komentar per halaman
 function tampilkanHalamanUcapan() {
@@ -244,55 +257,6 @@ if (ucapanForm) {
 loadUcapan();
 });
 
-// ===========================================================
-// 7. Efek Daun/Bunga Jatuh
-// ===========================================================
-function createFallingEffect() {
-  const container = document.getElementById('falling-effects');
-  const images = [
-    'assets/effects/e1.png',
-    'assets/effects/e2.png',
-    'assets/effects/e3.png',
-  ];
-
-  function createSinglePetal() {
-    const img = document.createElement('img');
-    img.src = images[Math.floor(Math.random() * images.length)];
-    img.classList.add('falling-item');
-
-    const startLeft = Math.random() * window.innerWidth;
-    const size = 20 + Math.random() * 30;
-    const duration = 10 + Math.random() * 10;
-    const swing = Math.random() * 100;
-
-    img.style.width = size + 'px';
-    img.style.height = size + 'px';
-    img.style.left = startLeft + 'px';
-
-    container.appendChild(img);
-
-    let startTime = null;
-    function animate(timestamp) {
-      if (!startTime) startTime = timestamp;
-      const progress = (timestamp - startTime) / 1000;
-      const y = progress * 100;
-      const x = Math.sin(progress) * swing;
-
-      img.style.transform = `translate(${x}px, ${y}px) rotate(${progress * 100}deg)`;
-
-      if (y < window.innerHeight + 50) {
-        requestAnimationFrame(animate);
-      } else {
-        img.remove();
-      }
-    }
-
-    requestAnimationFrame(animate);
-  }
-
-  setInterval(createSinglePetal, 300);
-}
-
 // Fungsi klik gambar
 const galleryImages = document.querySelectorAll('.gallery-grid img');
 const modal = document.getElementById('modal');
@@ -340,5 +304,61 @@ if (toggleGiftBtn) {
   }
 
 
+  document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
 
+  const inputs = e.target.elements;
+  const nama = inputs[0].value.trim();
+  const jumlah = parseInt(inputs[1].value);
+  const pesan = inputs[2].value.trim();
+  const konfirmasi = inputs[3].value;
 
+  if (!nama || !jumlah || !konfirmasi) {
+    alert('Semua data wajib diisi!');
+    return;
+  }
+
+  // Simpan ke Supabase
+  const { data, error } = await supabaseClient
+    .from('kehadiran')
+    .insert([{ nama, jumlah, pesan, konfirmasi }]);
+
+  if (error) {
+  console.error(error);
+  Swal.fire({
+    icon: 'error',
+    title: 'Gagal',
+    text: 'Gagal mengirim konfirmasi. Silakan coba lagi.',
+    confirmButtonColor: '#a58c5c'
+  });
+  } else {
+    Swal.fire({
+      icon: 'success',
+      title: 'Terkonfirmasi',
+      text: 'Terima kasih! Konfirmasi kamu telah dikirim.',
+      confirmButtonColor: '#a58c5c'
+    });
+    e.target.reset(); // clear form
+  }
+});
+
+function updateCoverCountdown() {
+  const eventDate = new Date("2025-07-17T10:00:00+08:00").getTime(); // waktu Indonesia
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  if (distance < 0) return;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("cover-days").textContent = String(days).padStart(2, "0");
+  document.getElementById("cover-hours").textContent = String(hours).padStart(2, "0");
+  document.getElementById("cover-minutes").textContent = String(minutes).padStart(2, "0");
+  document.getElementById("cover-seconds").textContent = String(seconds).padStart(2, "0");
+}
+
+setInterval(updateCoverCountdown, 1000);
+updateCoverCountdown(); // langsung dijalankan

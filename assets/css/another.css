@@ -1,0 +1,59 @@
+/* ============================================================================================
+   1. ANOTHER CSS (UNTUK CSS LAIN LAIN DILUAR SECTION) SEPERTI * , HTML, BODY DAN LAIN LAIN
+=============================================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
+
+html, body {
+  height: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #3b3b3b;
+  background-color: #fff;
+  scroll-behavior:smooth;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.audio-toggle {
+  position: fixed;
+  bottom: 19px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  background: none; /* tidak ada background */
+}
+
+.audio-toggle:hover {
+  background-color: #f0f0f0; /* tetap bisa kasih efek hover */
+  transform: scale(1.05);
+}
+
+.audio-toggle i {
+  font-size: 20px;
+  color: #333;
+  line-height: 2.5;
+  display: block;
+  padding-left: 10px;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}

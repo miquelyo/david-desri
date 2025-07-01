@@ -1,0 +1,179 @@
+/* RSVP Card Container */
+.rsvp-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 30px 25px;
+  margin: 0 auto;
+  max-width: 500px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* === RSVP Section === */
+.section-rsvp-confirm {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.section-rsvp-confirm h2.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 4rem;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.rsvp-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.rsvp-form input,
+.rsvp-form textarea {
+  padding: 14px 18px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #333;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+.rsvp-form input::placeholder,
+.rsvp-form textarea::placeholder {
+  color: #aaa;
+}
+
+.rsvp-form input:focus,
+.rsvp-form textarea:focus {
+  border-color: rgba(160, 160, 160, 0.4);
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+}
+
+.rsvp-form .radio-group {
+  display: flex;
+  flex-direction: column; /* <- ini bikin sejajar ke bawah */
+  gap: 12px;               /* beri jarak antar radio item */
+  margin-top: 5px;
+  margin-bottom: 15px;
+  align-items: flex-start; /* agar teks tetap rata kiri */
+}
+
+
+.custom-radio {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.custom-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-check {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  width: 18px;
+  background-color: #f0f0f0;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.custom-radio:hover .radio-check {
+  background-color: #e8e8e8;
+}
+
+.custom-radio input[type="radio"]:checked ~ .radio-check {
+  border-color: #555;
+  background-color: #fff;
+}
+
+.custom-radio input[type="radio"]:checked ~ .radio-check::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #555;
+  transform: translate(-50%, -50%);
+}
+
+/* Submit Button */
+.rsvp-form button {
+  padding: 14px 22px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.35);
+  color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.rsvp-form button:hover {
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.custom-select {
+  padding: 14px 18px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #333;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23666'%20d='M2%205L0%200h4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.6em auto;
+}
+
+.custom-select:focus {
+  border-color: rgba(160, 160, 160, 0.4);
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+}

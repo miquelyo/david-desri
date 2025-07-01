@@ -1,0 +1,45 @@
+.section-ayat {
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  margin: 40px;
+  text-align: center;
+}
+
+.ring-wrapper {
+  margin-bottom: 20px;
+}
+
+.ring-image {
+  width: 100px;
+  height: auto;
+  opacity: 0.8;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  animation: floatRing 6s ease-in-out infinite;
+}
+
+@keyframes floatRing {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.ayat-text {
+  font-size: 1.1rem;
+  color: #222;
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ayat-sumber {
+  display: block;
+  font-weight: 600;
+  margin-top: 8px;
+  color: #555;
+}
