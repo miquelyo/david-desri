@@ -11,7 +11,7 @@
 .section-gallery .section-title {
   font-size: 2rem;
   margin-bottom: 40px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Dancing Script', cursive;
   color: #333;
 }
 
@@ -82,7 +82,7 @@
 
 @media screen and (max-width: 768px) {
   .section-gallery .section-title {
-    font-size: 1.5rem;
+    font-size: 3rem;
     margin-bottom: 25px;
   }
 

@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const floatingNav = document.getElementById('floating-nav');
   const audioToggle = document.getElementById('audio-toggle');
   const audioIcon = document.getElementById('audio-icon');
+  
 
 // 1. Cek kode (pakai metode lama)
 if (guestCode) {
@@ -68,6 +69,7 @@ else if (guestTo) {
       // Efek daun jatuh mulai
       createFallingEffect();
     }, 600);
+    
   });
 
   // Toggle Mute/Unmute
@@ -102,7 +104,7 @@ else if (guestTo) {
   // 5. Countdown to Wedding
   // ===========================================================
   function updateCountdown() {
-    const targetDate = new Date("2025-07-17T10:00:00+07:00");
+    const targetDate = new Date("2025-07-19T13:00:00+07:00");
     const now = new Date();
     const diff = targetDate - now;
 
@@ -343,7 +345,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
 
 
 function updateCoverCountdown() {
-  const eventDate = new Date("2025-07-17T10:00:00+08:00").getTime(); // waktu Indonesia
+  const eventDate = new Date("2025-07-19T13:00:00+07:00").getTime(); // waktu Indonesia
   const now = new Date().getTime();
   const distance = eventDate - now;
 
@@ -362,3 +364,24 @@ function updateCoverCountdown() {
 
 setInterval(updateCoverCountdown, 1000);
 updateCoverCountdown(); // langsung dijalankan
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Disalin!',
+        text: 'Nomor rekening berhasil disalin ke clipboard.',
+        confirmButtonColor: '#a58c5c'
+      });
+    })
+    .catch(err => {
+      console.error('Gagal menyalin:', err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops!',
+        text: 'Gagal menyalin nomor rekening.',
+        confirmButtonColor: '#a58c5c'
+      });
+    });
+}
