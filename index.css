@@ -182,7 +182,7 @@
 .cover-section {
   min-height: 100vh;
   width: 100%;
-  background-image: url('assets/images/galeri2.JPG');
+  background-image: url('assets/images/galeri2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1071,7 +1071,7 @@
 .section-penutup {
   height: 100vh;
   padding: 20px;
-  background: url('assets/images/galeri2.JPG') center center / cover no-repeat;
+  background: url('assets/images/galeri2.jpg') center center / cover no-repeat;
   color: white;
   display: flex;
   flex-direction: column;
