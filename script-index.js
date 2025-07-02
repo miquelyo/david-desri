@@ -304,33 +304,32 @@ if (toggleGiftBtn) {
   }
 
 
-  document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
+document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const inputs = e.target.elements;
   const nama = inputs[0].value.trim();
   const jumlah = parseInt(inputs[1].value);
   const pesan = inputs[2].value.trim();
-  const konfirmasi = inputs[3].value;
+  const status = document.querySelector('input[name="status"]:checked')?.value;
 
-  if (!nama || !jumlah || !konfirmasi) {
+  if (!nama || !jumlah || !status) {
     alert('Semua data wajib diisi!');
     return;
   }
 
-  // Simpan ke Supabase
   const { data, error } = await supabaseClient
     .from('kehadiran')
-    .insert([{ nama, jumlah, pesan, konfirmasi }]);
+    .insert([{ nama, jumlah, pesan, status }]);
 
   if (error) {
-  console.error(error);
-  Swal.fire({
-    icon: 'error',
-    title: 'Gagal',
-    text: 'Gagal mengirim konfirmasi. Silakan coba lagi.',
-    confirmButtonColor: '#a58c5c'
-  });
+    console.error(error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Gagal',
+      text: 'Gagal mengirim konfirmasi. Silakan coba lagi.',
+      confirmButtonColor: '#a58c5c'
+    });
   } else {
     Swal.fire({
       icon: 'success',
@@ -338,9 +337,10 @@ if (toggleGiftBtn) {
       text: 'Terima kasih! Konfirmasi kamu telah dikirim.',
       confirmButtonColor: '#a58c5c'
     });
-    e.target.reset(); // clear form
+    e.target.reset();
   }
 });
+
 
 function updateCoverCountdown() {
   const eventDate = new Date("2025-07-17T10:00:00+08:00").getTime(); // waktu Indonesia

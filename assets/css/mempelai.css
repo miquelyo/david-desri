@@ -41,6 +41,7 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
+  border: 6px solid #a58c5c;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }

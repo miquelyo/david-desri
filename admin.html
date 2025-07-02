@@ -14,39 +14,75 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1><i class="fa-solid fa-user-plus"></i> Tambah Tamu Undangan</h1>
-
-   <form id="form-tamu">
-    <label for="nama-tamu">Nama Tamu</label>
-    <input type="text" id="nama-tamu" placeholder="Misal: Miguel dan Partner" required>
-
-    <button type="submit"><i class="fa-solid fa-paper-plane"></i> Simpan Tamu</button>
-  </form>
-
-    <div id="result" class="result" style="display: none;"></div>
-    <div id="url-preview" class="url-preview"></div>
-
-    <h2>Daftar Seluruh Tamu</h2>
-    <table id="tabel-tamu">
-      <thead>
-        <tr>
-          <th>Nama</th>
-          <th>Link</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tbody id="tabel-tamu-body">
-        <!-- Diisi via admin.js -->
-      </tbody>
-    </table>
-    <!-- <button id="kirim-whatsapp"><i class="fa-brands fa-whatsapp"></i> Kirim ke WhatsApp</button> -->
-
-
+<div class="admin-container">
+  <!-- TAB NAVIGATION -->
+  <div class="tabs">
+    <button class="tab-button active" onclick="switchTab('tamu-tab')">Daftar Tamu</button>
+    <button class="tab-button" onclick="switchTab('kehadiran-tab')">Daftar Kehadiran</button>
   </div>
 
-  <!-- JS -->
-  <script src="admin.js"></script>
-  <script src="script-index.js"></script>
+  <!-- TAB 1: TAMU -->
+  <div id="tamu-tab" class="tab-content active">
+    <h1><i class="fa-solid fa-user-plus"></i> Tambah Tamu</h1>
+    <form id="form-tamu" class="form-card">
+      <input type="text" id="nama-tamu" placeholder="Nama Tamu (cth: Miguel & Partner)" required />
+      <button type="submit"><i class="fa-solid fa-plus"></i> Tambah</button>
+      <div id="result" class="result" style="display: none;"></div>
+      <div id="url-preview" class="url-preview"></div>
+    </form>
+
+    <!-- Filter + Search -->
+    <div class="filter-search-row">
+      <select id="filter-undangan">
+        <option value="all">Semua</option>
+        <option value="invited">Sudah Diundang</option>
+        <option value="not_invited">Belum Diundang</option>
+      </select>
+      <input type="text" id="search-nama" placeholder="Cari nama tamu..." />
+    </div>
+
+    <!-- Tabel tamu -->
+    <h2><i class="fa-solid fa-list"></i> Daftar Tamu</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Link</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="tabel-tamu-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB 2: KEHADIRAN -->
+  <div id="kehadiran-tab" class="tab-content">
+    <h2><i class="fa-solid fa-calendar-check"></i> Daftar Kehadiran (RSVP)</h2>
+    <button class="refresh-btn" onclick="loadKehadiran()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Jumlah</th>
+            <th>Pesan</th>
+            <th>Status</th>
+            <th>Waktu</th>
+          </tr>
+        </thead>
+        <tbody id="tabel-kehadiran-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="admin.js"></script>
+<script src="script-index.js"></script>
+
 </body>
 </html>
