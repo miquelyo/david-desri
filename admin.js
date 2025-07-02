@@ -87,17 +87,19 @@ async function loadTamu() {
 Bapak/Ibu/Saudara/i
 ${tamu.name}
 _____________________
-Dengan penuh sukacita dan kerendahan hati, izinkan kami mengundang Bapak/Ibu/Saudara/i untuk menjadi bagian dari hari bahagia kami, saat kami memulai perjalanan baru sebagai pasangan suami istri.
+
+Tanpa mengurangi rasa hormat, izinkan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.
 
 💍 David & Desri
 
-Acara pernikahan kami akan dilangsungkan pada bulan Juli 2025. Informasi lengkap mengenai waktu dan tempat dapat dilihat melalui undangan digital berikut:
+Informasi lengkap mengenai waktu dan tempat dapat dilihat melalui link undangan berikut:
 
 📨 ${invitationLink}
 
 Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
 
 Terima kasih atas perhatian dan kasih yang telah diberikan.
+
 Salam hangat dari kami,
 David & Desri`;
 
