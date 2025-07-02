@@ -385,3 +385,14 @@ function copyToClipboard(text) {
       });
     });
 }
+
+
+  const slider = document.querySelector('.manual-slider-container.no-limit');
+
+  slider.addEventListener('scroll', () => {
+    // Jika sudah hampir ke ujung kanan, scroll balik ke awal
+    if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 1) {
+      slider.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  });
+
